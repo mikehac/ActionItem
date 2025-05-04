@@ -1,0 +1,17 @@
+GET http://localhost:3000/persons
+
+###
+GET http://localhost:3000/randompersons
+
+###
+POST http://localhost:3000/person
+Content-Type: application/json
+  
+{
+  "name": "John Doe",
+  "gender":"male",
+  "email": "test@mail.com",
+  "phone": "1234567890",
+  "country": "USA",
+  "age": 30
+}
