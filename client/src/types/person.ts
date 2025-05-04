@@ -7,4 +7,11 @@ export interface Person {
   country: string;
   phone: string;
   email: string;
+  age?: number;
+  address?: {
+    street?: string;
+    number?: string;
+    city?: string;
+    state?: string;
+  };
 }

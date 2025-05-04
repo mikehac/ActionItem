@@ -2,7 +2,18 @@ import { Person } from "../types/person";
 import { RandomPerson } from "../types/randomPerson";
 
 export function normalizePerson(input: Person | RandomPerson): Person {
-  if ("id" in input) return input;
+  if ("id" in input && "thumbnail_image" in input) {
+    return {
+      id: input.id,
+      name: input.name,
+      thumbnail_image: input.thumbnail_image,
+      large_image: input.large_image,
+      gender: input.gender,
+      country: input.country,
+      phone: input.phone,
+      email: input.email,
+    };
+  }
 
   return {
     id: Math.random(), // Replace with reliable ID if needed

@@ -37,10 +37,9 @@ export class AppService {
     entityPerson.name = person.name;
     entityPerson.gender = person.gender;
     entityPerson.thumbnail_image = person.thumbnail_image ?? '';
+    entityPerson.large_image = person.large_image ?? '';
     entityPerson.phone = person.phone ?? '';
     entityPerson.email = person.email ?? '';
-    entityPerson.large_image = person.large_image ?? '';
-    entityPerson.thumbnail_image = person.thumbnail ?? '';
     entityPerson.country = person.country ?? '';
 
     const newPerson = this.personRepository.create(entityPerson);

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Person } from "../types/person";
 import { RandomPerson } from "../types/randomPerson";
 import { getName, getThumbnail, getGender, getCountry, getPhone, getEmail } from "../utils/personFieldHelpers";
@@ -7,6 +8,11 @@ type Props = {
 };
 
 export default function PersonList({ persons }: Props) {
+  const navigate = useNavigate();
+  function handleRowClick(person: Person | RandomPerson) {
+    navigate(`/profile`, { state: { person } });
+  }
+
   return (
     <div className="container">
       <div className="row fw-bold bg-light py-2">
@@ -18,7 +24,7 @@ export default function PersonList({ persons }: Props) {
         <div className="col-4 text-center">Email</div>
       </div>
       {persons.map((person, index) => (
-        <div className="row py-2 border-bottom" key={"id" in person ? person.id : index} onClick={() => console.log(person)}>
+        <div className="row py-2 border-bottom" key={index} onClick={() => handleRowClick(person)}>
           <div className="col-1 d-flex justify-content-center align-items-center">
             <img
               src={getThumbnail(person)}

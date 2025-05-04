@@ -1,4 +1,5 @@
 export interface RandomPerson {
+  id: id;
   name: Name;
   picture: picture;
   gender: "male" | "female";
@@ -21,4 +22,16 @@ interface picture {
 
 interface location {
   country: string;
+  street: street;
+  city: string;
+  state: string;
+}
+
+interface street {
+  name: string;
+  number: string;
+}
+interface id {
+  name: string;
+  value: string;
 }

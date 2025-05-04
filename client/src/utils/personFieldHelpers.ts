@@ -15,16 +15,51 @@ export function getThumbnail(person: Person | RandomPerson): string {
   return "";
 }
 
+export function getPicture(person: Person | RandomPerson): string {
+  if ("large_image" in person) return person.large_image as string;
+  if ("picture" in person) return person.picture.large;
+  return "";
+}
+
 export function getGender(person: Person | RandomPerson): string {
   return person.gender || "N/A";
 }
 
 export function getCountry(person: Person | RandomPerson): string {
   if ("country" in person) return person.country;
-  if ("location" in person) return person.location.country;
+
   return "N/A";
 }
 
+export function getAddress(person: Person | RandomPerson): string {
+  if ("address" in person) return typeof person.address === "string" ? person.address : "N/A";
+  if ("location" in person) {
+    const { street, city, state } = person.location;
+    return `${street.number} ${street.name}, ${city}, ${state}`;
+  }
+  return "N/A";
+}
+
+export function getStreet(person: Person | RandomPerson): string {
+  if ("address" in person) return `${person.address?.number} ${person.address?.street}` || "N/A";
+  if ("location" in person) {
+    const { street } = person.location;
+    return `${street.number} ${street.name}`;
+  }
+  return "N/A";
+}
+
+export function getCity(person: Person | RandomPerson): string {
+  if ("address" in person) return person.address?.city || "N/A";
+  if ("location" in person) return person.location.city || "N/A";
+  return "N/A";
+}
+
+export function getState(person: Person | RandomPerson): string {
+  if ("address" in person) return person.address?.state || "N/A";
+  if ("location" in person) return person.location.state || "N/A";
+  return "N/A";
+}
 export function getPhone(person: Person | RandomPerson): string {
   return person.phone || "N/A";
 }

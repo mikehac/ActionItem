@@ -152,8 +152,8 @@ npm run build
 - `GET /persons`: Returns all persons from the database
 - `GET /person/:id`: Returns a specific person by ID
 - `POST /person`: Saves a new person to the database
-- `PUT /updatePerson/:id`: Updates a specific person
-- `DELETE /deletePerson/:id`: Deletes a specific person
+- `PUT /person/:id`: Updates a specific person
+- `DELETE /person/:id`: Deletes a specific person
 
 ## Project Structure
 

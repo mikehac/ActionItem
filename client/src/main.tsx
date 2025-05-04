@@ -15,7 +15,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<App />} />
         <Route path="/history" element={<History />} />
         <Route path="/fetch" element={<Fetch />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<App />} />
       </Routes>
     </BrowserRouter>

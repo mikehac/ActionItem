@@ -1,12 +1,10 @@
 import { useEffect } from "react";
 import { useApp } from "../AppContext";
 import Filter from "./filter";
-import { useNavigate } from "react-router-dom";
 import PersonList from "./PersonList";
 
 export default function Fetch() {
   const appContext = useApp();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (appContext.persons.length === 0 || appContext.fetchType !== "randomPersons") {
