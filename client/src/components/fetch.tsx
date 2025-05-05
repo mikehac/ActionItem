@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useApp } from "../AppContext";
 import Filter from "./filter";
-import PersonList from "./PersonList";
+import PersonList from "./personList";
 
 export default function Fetch() {
   const appContext = useApp();

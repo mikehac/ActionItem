@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { useApp } from "../AppContext";
 import { useEffect } from "react";
+import { useApp } from "../AppContext";
 import Filter from "./filter";
-import PersonList from "./PersonList";
+import PersonList from "./personList";
 
 export default function History() {
   const appContext = useApp();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (appContext.persons.length === 0 || appContext.fetchType !== "persons") {
