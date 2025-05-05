@@ -1,0 +1,55 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: actionitem
+      POSTGRES_DB: actionItemdb
+    networks:
+      - actionitem_network
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+  server:
+    image: actionitem.server:latest
+    build:
+      context: ./server
+      dockerfile: ./dockerfile
+    env_file:
+      - ./server/.env.local
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    depends_on:
+      - db
+    networks:
+      - actionitem_network
+  client:
+    image: actionitem.client:latest
+    build:
+      context: ./client
+      dockerfile: ./dockerfile
+    env_file:
+      - ./client/.env.local
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+    networks:
+      - actionitem_network
+    depends_on:
+      - server
+volumes:
+  db_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${POSTGRES_VOLUME_PATH}
+      o: bind
+networks:
+  actionitem_network:
+    driver: bridge
