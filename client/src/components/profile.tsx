@@ -1,7 +1,19 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { Person } from "../types/person";
 import { RandomPerson } from "../types/randomPerson";
-import { getCity, getState, getEmail, getGender, getName, getPhone, getPicture, getStreet, getThumbnail, getAddress } from "../utils/personFieldHelpers";
+import {
+  getCity,
+  getState,
+  getEmail,
+  getGender,
+  getName,
+  getPhone,
+  getPicture,
+  getStreet,
+  getThumbnail,
+  getAddress,
+  getCountry,
+} from "../utils/personFieldHelpers";
 import { Button } from "react-bootstrap";
 import { useRef, useState } from "react";
 
@@ -24,6 +36,7 @@ export default function Profile() {
       name: getName(person),
       thumbnail_image: getThumbnail(person),
       large_image: getPicture(person),
+      country: getCountry(person),
       address: getAddress(person),
       gender: getGender(person),
       email: getEmail(person),

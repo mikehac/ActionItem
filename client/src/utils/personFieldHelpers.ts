@@ -27,7 +27,7 @@ export function getGender(person: Person | RandomPerson): string {
 
 export function getCountry(person: Person | RandomPerson): string {
   if ("country" in person) return person.country;
-
+  if ("location" in person) return person.location.country;
   return "N/A";
 }
 

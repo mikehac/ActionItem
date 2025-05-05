@@ -36,6 +36,7 @@ export class AppService {
     const entityPerson = new Person();
     entityPerson.name = person.name;
     entityPerson.gender = person.gender;
+    entityPerson.country = person.country;
     entityPerson.thumbnail_image = person.thumbnail_image ?? '';
     entityPerson.large_image = person.large_image ?? '';
     entityPerson.phone = person.phone ?? '';
